@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/agent/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/props/Ingredient.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/screens/Main.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 521, 173 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 129, 145 )
+
 [node name="Main" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Floor" type="Area2D" parent="." groups=["floor"]]
 position = Vector2( 0, 264 )
@@ -15,10 +20,29 @@ position = Vector2( 0, 264 )
 position = Vector2( 511, 163 )
 shape = SubResource( 1 )
 
-[node name="Ingredients" type="Node2D" parent="."]
+[node name="IngredientsZone" type="Node2D" parent="."]
+position = Vector2( -96, 0 )
 
-[node name="Ingredient" parent="Ingredients" instance=ExtResource( 2 )]
+[node name="Ingredients" type="Node2D" parent="IngredientsZone"]
+
+[node name="Ingredient" parent="IngredientsZone/Ingredients" instance=ExtResource( 2 )]
 position = Vector2( 728, 176 )
+
+[node name="Ingredient2" parent="IngredientsZone/Ingredients" instance=ExtResource( 2 )]
+position = Vector2( 784, 176 )
+
+[node name="PlayerIngredientPosition" type="Position2D" parent="IngredientsZone"]
+position = Vector2( 800, 312 )
+
+[node name="IngredientArea" type="Area2D" parent="IngredientsZone" groups=["ingredient_area"]]
+position = Vector2( 800, 152 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientsZone/IngredientArea"]
+shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 344, 360 )
+
+[connection signal="mouse_entered" from="Floor" to="." method="_on_Floor_mouse_entered"]
+[connection signal="mouse_exited" from="Floor" to="." method="_on_Floor_mouse_exited"]
+[connection signal="started_moving" from="Player" to="." method="_on_Player_started_moving"]
