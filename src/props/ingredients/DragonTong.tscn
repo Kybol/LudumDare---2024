@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/assets/Props/fiole.png" type="Texture" id=1]
+
+[node name="DragonTong" type="Sprite"]
+position = Vector2( 0, -12 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 1 )
