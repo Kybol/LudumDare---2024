@@ -15,11 +15,13 @@ var _is_hovered: bool = false
 func _ready() -> void:
 	_highlight.modulate.a = 0.0
 
-	_area_2d.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
-	_area_2d.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
+	Globals.t = _area_2d.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
+	Globals.t = _area_2d.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
 
 
 func _process(_delta) -> void:
+	if not is_idle: return
+	
 	if Input.is_action_just_pressed("left_click") and _is_hovered:
 		emit_signal("selected", num)
 
@@ -30,7 +32,7 @@ func _on_Area2D_mouse_entered() -> void:
 	_is_hovered = true
 	
 	_highlight.modulate.a = 1.0
-	_visuals.scale = Vector2(1.1, 1.1)
+	_visuals.scale = Vector2(1.05, 1.05)
 
 
 func _on_Area2D_mouse_exited() -> void:

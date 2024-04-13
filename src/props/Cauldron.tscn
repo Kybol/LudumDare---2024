@@ -71,19 +71,20 @@ shape = SubResource( 2 )
 position = Vector2( 72, -96 )
 
 [node name="Dots" type="Node2D" parent="."]
+position = Vector2( 0, -56 )
 
 [node name="WhiteDot" type="Sprite" parent="Dots"]
-position = Vector2( -16, -144 )
+position = Vector2( -16, -0.300018 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="WhiteDot2" type="Sprite" parent="Dots"]
-position = Vector2( -1.90735e-06, -144 )
+position = Vector2( -1.90735e-06, -0.300018 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="WhiteDot3" type="Sprite" parent="Dots"]
-position = Vector2( 16, -144 )
+position = Vector2( 16, -0.300018 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 

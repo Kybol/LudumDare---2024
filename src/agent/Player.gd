@@ -13,6 +13,7 @@ var _previous_click_position: Vector2 = Vector2.ZERO
 
 var _is_at_destination: bool = false
 var _is_stopped: bool = false
+var _has_soup: bool = false
 
 var _ingredient: Sprite = null
 
@@ -35,7 +36,7 @@ func _physics_process(_delta):
 	var target_position = (click_position - global_position).normalized()
 	
 	if global_position.distance_to(click_position) > 3:
-		move_and_slide(target_position * speed)
+		Globals.t = move_and_slide(target_position * speed)
 		
 	if _is_at_destination: return
 	
@@ -53,22 +54,36 @@ func stop_moving() -> void:
 	_is_stopped = true
 
 
-func put_ingredient_in_hands(ingredient: Sprite) -> void:
-	if hands_are_full(): remove_ingredient_from_hands()
+func put_ingredient_in_hands(ingredient: Sprite, is_soup: bool = false) -> void:
+	if hands_are_full(): 
+		Globals.t = remove_ingredient_from_hands()
 	
 	call_deferred("add_child", ingredient)
 	yield(ingredient, "tree_entered")
 	
 	ingredient.global_position = _ingredient_placeholder.global_position
 	_ingredient = ingredient
-
-
-func remove_ingredient_from_hands() -> void:
-	if not hands_are_full(): return
 	
+	if is_soup: _has_soup = true
+
+
+func remove_ingredient_from_hands() -> Sprite:
+	if not hands_are_full(): return null
+	
+	var old_ingredient: Sprite
+	old_ingredient = _ingredient.duplicate()
+	
+	_has_soup = false
+	_ingredient.modulate.a = 0.0
 	_ingredient.queue_free()
 	_ingredient = null
+	
+	return old_ingredient
 
 
 func hands_are_full() -> bool:
 	return is_instance_valid(_ingredient)
+
+
+func has_soup() -> bool:
+	return _has_soup

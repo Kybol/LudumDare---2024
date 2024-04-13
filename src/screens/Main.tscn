@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/agent/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/props/ingredients/Ingredient.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/props/ingredients/StardustProvider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/screens/Main.gd" type="Script" id=3]
 [ext_resource path="res://src/props/Cauldron.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/assets/BackGround.png" type="Texture" id=5]
+[ext_resource path="res://src/props/Parchment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/props/Portal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/props/ingredients/DragonTongProvider.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 484, 128 )
@@ -16,9 +19,12 @@ extents = Vector2( 129, 145 )
 script = ExtResource( 3 )
 
 [node name="BackGround" type="Sprite" parent="."]
-position = Vector2( 505, 299 )
-scale = Vector2( 0.54, 0.555 )
+position = Vector2( 512, 301 )
+scale = Vector2( 0.533, 0.533 )
 texture = ExtResource( 5 )
+
+[node name="Parchment" parent="BackGround" instance=ExtResource( 6 )]
+position = Vector2( -555.347, -234.522 )
 
 [node name="Floor" type="Area2D" parent="." groups=["floor"]]
 position = Vector2( 0, 264 )
@@ -27,16 +33,19 @@ position = Vector2( 0, 264 )
 position = Vector2( 468, 208 )
 shape = SubResource( 1 )
 
+[node name="Portal" parent="." instance=ExtResource( 8 )]
+position = Vector2( 256, 392 )
+
 [node name="IngredientsZone" type="YSort" parent="."]
 position = Vector2( -64, 32 )
 
 [node name="Ingredients" type="Node2D" parent="IngredientsZone"]
 
-[node name="Ingredient" parent="IngredientsZone/Ingredients" instance=ExtResource( 2 )]
-position = Vector2( 728, 176 )
+[node name="DragonTongProvider" parent="IngredientsZone/Ingredients" instance=ExtResource( 9 )]
+position = Vector2( 744, 176 )
 
-[node name="Ingredient2" parent="IngredientsZone/Ingredients" instance=ExtResource( 2 )]
-position = Vector2( 784, 176 )
+[node name="StardustProvider" parent="IngredientsZone/Ingredients/DragonTongProvider" instance=ExtResource( 2 )]
+position = Vector2( 112, 8 )
 
 [node name="PlayerIngredientPosition" type="Position2D" parent="IngredientsZone"]
 position = Vector2( 704, 384 )

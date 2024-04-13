@@ -7,6 +7,7 @@ export (PackedScene) var sprite_scene: PackedScene
 func _ready() -> void:
 	._ready()
 
+
 func _on_Ingredient_selected(_num) -> void:
 	yield(Globals.player, "target_reached")
 	
