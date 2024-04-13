@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/screens/menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://src/assets/menu---assets/Frame 12.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.490196 )
@@ -30,6 +31,11 @@ script = ExtResource( 1 )
 margin_right = 1037.0
 margin_bottom = 614.0
 color = Color( 0.65098, 0.317647, 0.317647, 1 )
+
+[node name="Frame12" type="Sprite" parent="ColorRect"]
+position = Vector2( 518.5, 306.5 )
+scale = Vector2( 0.539063, 0.567593 )
+texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 1040.0
