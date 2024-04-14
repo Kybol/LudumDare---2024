@@ -20,4 +20,4 @@ position = Vector2( 0, -58 )
 shape = SubResource( 1 )
 
 [node name="IngredientPlaceHolder" type="Position2D" parent="."]
-position = Vector2( -3, -41 )
+position = Vector2( 0, -70 )

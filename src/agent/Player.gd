@@ -4,6 +4,7 @@ signal target_reached
 signal started_moving
 
 var click_position: Vector2 = Vector2.ZERO
+var ingredients_in_soup: Array = []
 
 export (float) var speed: float = 300.0
 
@@ -14,6 +15,7 @@ var _previous_click_position: Vector2 = Vector2.ZERO
 var _is_at_destination: bool = false
 var _is_stopped: bool = false
 var _has_soup: bool = false
+
 
 var _ingredient: Sprite = null
 
@@ -72,6 +74,8 @@ func remove_ingredient_from_hands() -> Sprite:
 	
 	var old_ingredient: Sprite
 	old_ingredient = _ingredient.duplicate()
+	
+	if _has_soup: ingredients_in_soup = _ingredient.ingredient_list.duplicate()
 	
 	_has_soup = false
 	_ingredient.modulate.a = 0.0

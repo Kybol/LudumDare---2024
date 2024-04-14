@@ -14,10 +14,11 @@ func _on_Portal_selected(_num) -> void:
 	yield(Globals.player, "target_reached")
 	
 	var soup: Node2D = Globals.player.remove_ingredient_from_hands()
+	var soup_array: Array = Globals.player.ingredients_in_soup
 	var is_success: bool
 	
 	if Globals.recipie.size() > 0:
-		is_success = check_soup(soup)
+		is_success = check_soup(soup_array)
 	else:
 		return
 	
@@ -27,12 +28,23 @@ func _on_Portal_selected(_num) -> void:
 		print("NO")
 
 
-func check_soup(soup: Node2D) -> bool:
-	print("soup ? ", soup)
-	for ingredient in soup.get_ingredient_list():
-		if not Globals.recipie.has(ingredient.ingredient_type):
-			return false
-	return true
+func check_soup(soup: Array) -> bool:
+	var recipie: Array = Globals.recipie.duplicate(true)
+	var soup_ingredients: Array = []
+	
+	for ingredient in soup:
+		soup_ingredients.append(ingredient.ingredient_type)
+		
+	return compare_recipes(recipie, soup_ingredients)
+
+
+func compare_recipes(recipe: Array, soup: Array) -> bool:
+	recipe.sort()
+	soup.sort()
+	
+	print("r : ", recipe)
+	print("soup :", soup)
+	return recipe == soup
 
 
 func put_soup_in() -> void:

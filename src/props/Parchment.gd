@@ -36,7 +36,7 @@ func reset_parchment() -> void:
 	_ingredient_2 = -1
 	_ingredient_3 = -1
 	
-	Globals.recipie.empty()
+	Globals.t = Globals.recipie.empty()
 	
 	_ingredient_1_placeholder.text = ""
 	_ingredient_2_placeholder.text = ""

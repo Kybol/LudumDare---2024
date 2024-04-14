@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/props/ingredients/Ingredient.gd" type="Script" id=1]
+[ext_resource path="res://src/assets/Props/ingredients/Chevres_reserve_fond.png" type="Texture" id=2]
+[ext_resource path="res://src/assets/Props/ingredients/Chevres_reserve.png" type="Texture" id=3]
+[ext_resource path="res://src/props/ingredients/Goat.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 67.409
+height = 17.3598
+
+[node name="GoatProvider" type="Node2D"]
+script = ExtResource( 1 )
+sprite_scene = ExtResource( 4 )
+
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2( -15, -47 )
+
+[node name="Highlight" type="Sprite" parent="Visuals"]
+position = Vector2( 14, 3.75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Visuals"]
+position = Vector2( 14, 3.75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 1, 1 )
+rotation = 1.54959
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -44.0961, 4.06588 )
+shape = SubResource( 1 )
+
+[connection signal="selected" from="." to="." method="_on_Ingredient_selected"]
