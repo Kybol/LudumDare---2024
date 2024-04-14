@@ -1,7 +1,9 @@
 extends "res://src/props/Hoverable.gd"
 
+onready var player_position: Position2D = $PlayerPosition
 onready var _soup: Sprite = $Visuals/Soup
 onready var _demon: Node2D = $Demon
+onready var _success_particles: Particles2D = $SuccessBubbles
 
 var _original_color: Color = "ff6e6e"
 var _red: Color = "ff0000"
@@ -9,6 +11,9 @@ var _red: Color = "ff0000"
 var _can_soup: bool = true
 
 var _recipe_for_demon: Array = []
+
+func _ready():
+	_success_particles.emitting = false
 
 
 func _on_Portal_selected(_num) -> void:
@@ -29,6 +34,7 @@ func _on_Portal_selected(_num) -> void:
 		put_soup_in()
 		_demon.spawn_demon(_recipe_for_demon)
 		_recipe_for_demon = []
+		_success_particles.emitting = true
 		Globals.emit_signal("success")
 	else:
 		print("NO")
@@ -65,7 +71,7 @@ func change_soup_color() -> void:
 
 
 func wait_for_success() -> void:
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	
 	var tween: SceneTreeTween = create_tween()
 	Globals.t = tween.tween_property(_soup, "modulate", _original_color, 0.5)

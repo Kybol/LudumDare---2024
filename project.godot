@@ -23,6 +23,10 @@ MenuBgMusic="*res://src/screens/menu/Menu_bg_music.tscn"
 
 window/stretch/mode="2d"
 
+[global]
+
+orientation=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
