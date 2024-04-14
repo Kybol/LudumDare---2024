@@ -1,10 +1,14 @@
 extends Node2D
 
 export (int) var number: int
+export (int) var parchement: int
 
 onready var _icons: Array = $ParchmentSprite.get_children()
 onready var _time_bar: Line2D = $TimerBar
 onready var _reset_timer: Timer = $ResetTimer
+onready var _parchment: Sprite = $Parchment1
+onready var _parchment_2: Sprite = $Parchment2
+onready var _parchment_3: Sprite = $Parchment3
 
 var _ingredient_1: int
 var _ingredient_2: int
@@ -12,6 +16,21 @@ var _ingredient_3: int
 
 func _ready() -> void:
 	randomize()
+	
+	match parchement:
+		1:
+			_parchment.visible = true
+			_parchment_2.visible = false
+			_parchment_3.visible = false
+		2:
+			_parchment.visible = false
+			_parchment_2.visible = true
+			_parchment_3.visible = false
+		3:
+			_parchment.visible = false
+			_parchment_2.visible = false
+			_parchment_3.visible = true
+	
 	set_ingredients()
 	Globals.t = Globals.connect("success", self, "on_success")
 

@@ -1,16 +1,34 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/props/Parchment.gd" type="Script" id=1]
 [ext_resource path="res://src/props/TimerBar.gd" type="Script" id=2]
 [ext_resource path="res://src/assets/WhiteRect.png" type="Texture" id=3]
 [ext_resource path="res://src/assets/BlackRect.png" type="Texture" id=4]
 [ext_resource path="res://src/assets/Props/parchment/Parchemin.png" type="Texture" id=5]
+[ext_resource path="res://src/assets/Props/parchment/parchemin2.png" type="Texture" id=6]
+[ext_resource path="res://src/assets/Props/parchment/parchemin3.png" type="Texture" id=7]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 0.935913, 0.765625, 1, 0.671875, 0.410654, 0.157471, 1 )
 
 [node name="Parchment" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="ParchmentSprite" type="Sprite" parent="."]
+[node name="Parchment1" type="Sprite" parent="."]
 texture = ExtResource( 5 )
+
+[node name="Parchment2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 14, -1 )
+texture = ExtResource( 6 )
+
+[node name="Parchment3" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 20, 0, 200, 300 )
+
+[node name="ParchmentSprite" type="Sprite" parent="."]
 
 [node name="Sprite1" type="Sprite" parent="ParchmentSprite"]
 position = Vector2( 0, -69 )
@@ -25,6 +43,7 @@ position = Vector2( -48, -152 )
 points = PoolVector2Array( 0, 0, 100, 0 )
 width = 20.0
 default_color = Color( 1, 1, 1, 1 )
+gradient = SubResource( 1 )
 script = ExtResource( 2 )
 bar_size = 100
 
