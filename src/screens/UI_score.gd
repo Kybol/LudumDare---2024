@@ -1,13 +1,13 @@
 extends CanvasLayer
 
+onready var _current_label = $VBoxContainer/HBoxContainer/Score
 
-var _actual_score = Globals.score
+var _current_score: int = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ui ready")	
-	Globals.connect("succeeded",  self, "_update_score")
+	print("ui")
+	Globals.connect("success", self, "_update_score")
 
 func _update_score():
-	_actual_score = 5
-	print(_actual_score)
+	_current_score += 5
+	_current_label.text= str(_current_score)
