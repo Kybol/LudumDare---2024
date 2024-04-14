@@ -30,14 +30,17 @@ texture = ExtResource( 5 )
 [node name="Parchment" parent="BackGround" instance=ExtResource( 6 )]
 position = Vector2( -660.413, -237.5 )
 number = 1
+parchement = 2
 
 [node name="Parchment2" parent="BackGround" instance=ExtResource( 6 )]
 position = Vector2( -465.291, -180.357 )
 number = 2
+parchement = 1
 
 [node name="Parchment3" parent="BackGround" instance=ExtResource( 6 )]
 position = Vector2( -255.159, -266.071 )
 number = 3
+parchement = 3
 
 [node name="Floor" type="Area2D" parent="." groups=["floor"]]
 position = Vector2( 0, 264 )
