@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var _current_label = $VBoxContainer/HBoxContainer/Score
+onready var _current_label = $Score
 
 var _current_score: int = 0
 var _current_life = Globals.life

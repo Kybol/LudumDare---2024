@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/demon_vanish.mp3-647bc66f2c3272f5400745cae7fc9ce4.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/demon_vanish.mp3"
+dest_files=[ "res://.import/demon_vanish.mp3-647bc66f2c3272f5400745cae7fc9ce4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -11,7 +11,8 @@ onready var _accessories_small: Array = $AccessoriesSmall.get_children()
 onready var _accessories_mid: Array = $AccessoriesMid.get_children()
 onready var _accessories_big: Array = $AccessoriesBig.get_children()
 
-onready var _sound = $sound
+onready var _sound1 = $sound1
+onready var _sound2 = $sound2
 
 var _original_position: Vector2
 
@@ -58,7 +59,7 @@ func spawn_demon(recipe: Array) -> void:
 	Globals.t = tween2.tween_property(self, "global_position:y", _original_position.y - 20.0, 0.0)	
 	Globals.t = tween2.tween_property(self, "global_position:y", _original_position.y, 0.5)	
 	Globals.t = tween.tween_callback(self, "wait_before_end")
-	_sound.play()
+	_sound1.play()
 	
 	
 
