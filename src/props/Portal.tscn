@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/assets/Props/Portal/portail.png" type="Texture" id=1]
 [ext_resource path="res://src/assets/Props/Portal/portail_fond.png" type="Texture" id=2]
 [ext_resource path="res://src/assets/Props/Portal/portail_interieur.png" type="Texture" id=3]
 [ext_resource path="res://src/props/Portal.gd" type="Script" id=4]
+[ext_resource path="res://src/props/Demon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 35.1936
@@ -33,5 +34,8 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -4 )
 rotation = 1.58335
 shape = SubResource( 1 )
+
+[node name="Demon" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -112 )
 
 [connection signal="selected" from="." to="." method="_on_Portal_selected"]

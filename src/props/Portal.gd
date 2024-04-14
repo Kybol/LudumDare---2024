@@ -1,11 +1,14 @@
 extends "res://src/props/Hoverable.gd"
 
 onready var _soup: Sprite = $Visuals/Soup
+onready var _demon: Node2D = $Demon
 
 var _original_color: Color = "ff6e6e"
 var _red: Color = "ff0000"
 
 var _can_soup: bool = true
+
+var _recipe_for_demon: Array = []
 
 
 func _on_Portal_selected(_num) -> void:
@@ -24,6 +27,8 @@ func _on_Portal_selected(_num) -> void:
 	
 	if is_success:
 		put_soup_in()
+		_demon.spawn_demon(_recipe_for_demon)
+		_recipe_for_demon = []
 		Globals.emit_signal("success")
 	else:
 		print("NO")
@@ -31,6 +36,7 @@ func _on_Portal_selected(_num) -> void:
 
 func check_soup(soup: Array) -> bool:
 	var recipie: Array = Globals.recipie.duplicate(true)
+	_recipe_for_demon = Globals.recipie.duplicate()
 	var soup_ingredients: Array = []
 	
 	for ingredient in soup:
@@ -42,9 +48,7 @@ func check_soup(soup: Array) -> bool:
 func compare_recipes(recipe: Array, soup: Array) -> bool:
 	recipe.sort()
 	soup.sort()
-	
-	print("r : ", recipe)
-	print("soup :", soup)
+
 	return recipe == soup
 
 
