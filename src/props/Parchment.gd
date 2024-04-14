@@ -63,7 +63,7 @@ func on_success(num: int) -> void:
 
 
 func change_timing(min_time, max_time) -> void:
-	if min_time <= 5.0: return
+	if min_time <= 2.0: return
 	
 	_time_bar.min_time = min_time
 	_time_bar.max_time = max_time
