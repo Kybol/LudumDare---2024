@@ -22,6 +22,7 @@ var _has_soup: bool = false
 
 var _ingredient: Node2D = null
 
+onready var walk = $walk
 
 func _ready():
 	Globals.player = self
@@ -40,7 +41,7 @@ func _physics_process(_delta):
 		_is_at_destination = false
 		_previous_click_position = click_position
 		click_position = get_global_mouse_position()
-	
+		walk.play()
 	var target_position = (click_position - global_position).normalized()
 	
 	if global_position.distance_to(click_position) > 3:
@@ -61,6 +62,7 @@ func change_click_position(new_position: Vector2) -> void:
 
 func stop_moving() -> void:
 	_is_stopped = true
+	walk.stop()
 
 
 func put_ingredient_in_hands(ingredient, is_soup: bool = false) -> void:

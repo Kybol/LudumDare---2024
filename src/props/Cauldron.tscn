@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/assets/Props/Cauldron/Chaudron.png" type="Texture" id=1]
 [ext_resource path="res://src/props/Cauldron.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/assets/Props/Cauldron/Chaudron_flammes.png" type="Texture" id=5]
 [ext_resource path="res://src/assets/Props/Cauldron/Chaudron_soupe.png" type="Texture" id=6]
 [ext_resource path="res://src/assets/sounds/pot_lid.mp3" type="AudioStream" id=7]
+[ext_resource path="res://src/assets/sounds/bulles.mp3" type="AudioStream" id=8]
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.303226, 0.535484, 1 )
@@ -106,6 +107,9 @@ gradient = SubResource( 5 )
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 volume_db = -11.0
+
+[node name="bulles" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="selected" from="." to="." method="_on_Cauldron_selected"]
 [connection signal="timeout" from="TimeBarCauldron/TimebarTimer" to="." method="_on_TimebarTimer_timeout"]

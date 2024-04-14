@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/agent/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/Player/CastielV2.png" type="Texture" id=2]
 [ext_resource path="res://src/assets/Player/spritesheets_walk.png" type="Texture" id=3]
+[ext_resource path="res://src/assets/sounds/footsteps.mp3" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
@@ -57,3 +58,7 @@ shape = SubResource( 1 )
 
 [node name="IngredientPlaceHolder" type="Position2D" parent="."]
 position = Vector2( 0, -70 )
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -13.109

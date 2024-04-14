@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bulles.mp3-67e6ba5e05677ff00372449280aed867.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/bulles.mp3"
+dest_files=[ "res://.import/bulles.mp3-67e6ba5e05677ff00372449280aed867.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

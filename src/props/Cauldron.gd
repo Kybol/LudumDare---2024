@@ -12,6 +12,7 @@ onready var _dots_array: Array = $Dots.get_children()
 onready var _soup: Sprite = $Visuals/ChaudronSoupe
 onready var _fire: Sprite = $Visuals/ChaudronFlammes
 onready var _bubbles: Particles2D = $Visuals/Bubbles
+onready var bulles = $bulles
 
 var _cooking_min_time: float = 3.0
 var _cooking_max_time: float = 4.0
@@ -96,6 +97,7 @@ func set_fire_on():
 	_timebar.points[1].x = 50
 	_timebar.modulate.a = 1.0
 	_timebar_timer.start(_cooking_time/10)	
+	bulles.play()
 
 
 func set_fire_off():
@@ -108,6 +110,7 @@ func set_fire_off():
 	
 	_timebar_timer.stop()
 	_timebar.modulate.a = 0.0
+	bulles.stop()
 
 
 func put_soup() -> void:
