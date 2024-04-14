@@ -11,3 +11,4 @@ func _ready():
 func _update_score():
 	_current_score += 5
 	_current_label.text= str(_current_score)
+
