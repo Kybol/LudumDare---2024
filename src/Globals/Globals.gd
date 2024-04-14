@@ -1,6 +1,6 @@
 extends Node
 
-signal success
+signal success(num)
 signal parchment_died
 
 var t
@@ -36,6 +36,8 @@ var ingredients_dictionary = {
 var selected_item: Node2D
 
 var recipie: Array = []
+var recipie_2: Array = []
+var recipie_3: Array = []
 
 var highest_score = 0
 

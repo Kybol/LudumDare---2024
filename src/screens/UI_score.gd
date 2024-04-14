@@ -8,7 +8,7 @@ func _ready():
 	print("ui")
 	Globals.connect("success", self, "_update_score")
 
-func _update_score():
+func _update_score(_num: int):
 	_current_score += 5
 	_current_label.text= str(_current_score)
 

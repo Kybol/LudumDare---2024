@@ -23,39 +23,49 @@ func _on_Portal_selected(_num) -> void:
 	
 	var soup: Node2D = Globals.player.remove_ingredient_from_hands()
 	var soup_array: Array = Globals.player.ingredients_in_soup
-	var is_success: bool
+	var is_success: int
 	
 	if Globals.recipie.size() > 0:
 		is_success = check_soup(soup_array)
 	else:
 		return
 	
-	if is_success:
+	if is_success != -1:
 		put_soup_in()
 		_demon.spawn_demon(_recipe_for_demon)
 		_recipe_for_demon = []
 		_success_particles.emitting = true
-		Globals.emit_signal("success")
+		Globals.emit_signal("success", is_success)
 	else:
 		print("NO")
 
 
-func check_soup(soup: Array) -> bool:
-	var recipie: Array = Globals.recipie.duplicate(true)
-	_recipe_for_demon = Globals.recipie.duplicate()
+func check_soup(soup: Array) -> int:
 	var soup_ingredients: Array = []
 	
 	for ingredient in soup:
 		soup_ingredients.append(ingredient.ingredient_type)
 		
-	return compare_recipes(recipie, soup_ingredients)
+	return compare_recipes(soup_ingredients)
 
 
-func compare_recipes(recipe: Array, soup: Array) -> bool:
+func compare_recipes(soup: Array) -> int:
+	var recipe: Array = Globals.recipie
+	var recipe_2: Array = Globals.recipie_2
+	var recipe_3: Array = Globals.recipie_3
+	
 	recipe.sort()
+	recipe_2.sort()
+	recipe_3.sort()
 	soup.sort()
-
-	return recipe == soup
+	
+	_recipe_for_demon = soup
+	
+	if recipe == soup: return 1
+	if recipe_2 == soup: return 2
+	if recipe_3 == soup: return 3
+	
+	return -1
 
 
 func put_soup_in() -> void:

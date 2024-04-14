@@ -1,5 +1,7 @@
 extends Node2D
 
+export (int) var number: int
+
 onready var _icons: Array = $ParchmentSprite.get_children()
 onready var _time_bar: Line2D = $TimerBar
 onready var _reset_timer: Timer = $ResetTimer
@@ -19,7 +21,13 @@ func set_ingredients() -> void:
 	_ingredient_2 = rand_range(0, Globals.ingredient_num - 1)
 	_ingredient_3 = rand_range(0, Globals.ingredient_num - 1)
 	
-	Globals.recipie = [_ingredient_1, _ingredient_2, _ingredient_3]
+	match number:
+		1:
+			Globals.recipie = [_ingredient_1, _ingredient_2, _ingredient_3]
+		2:
+			Globals.recipie_2 = [_ingredient_1, _ingredient_2, _ingredient_3]
+		3:
+			Globals.recipie_3 = [_ingredient_1, _ingredient_2, _ingredient_3]
 	
 	var texture_1 = Globals.ingredients_dictionary[_ingredient_1]
 	var texture_2 = Globals.ingredients_dictionary[_ingredient_2]
@@ -49,7 +57,8 @@ func reset_parchment() -> void:
 	_reset_timer.start(rand_range(1.0, 2.0))
 
 
-func on_success() -> void:
+func on_success(num: int) -> void:
+	if num != number: return
 	reset_parchment()
 
 
