@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/screens/menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/fonts/Play.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/assets/menu---assets/menu_01.png" type="Texture" id=3]
+[ext_resource path="res://src/assets/menu---assets/menu_bg_new.png" type="Texture" id=3]
 [ext_resource path="res://src/assets/fonts/Quit.tres" type="DynamicFont" id=4]
 
 [node name="MainMenu" type="Node2D"]
@@ -19,10 +19,10 @@ scale = Vector2( 0.534375, 0.557408 )
 texture = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = 425.0
-margin_top = 263.0
-margin_right = 603.0
-margin_bottom = 478.0
+margin_left = 424.0
+margin_top = 178.0
+margin_right = 602.0
+margin_bottom = 393.0
 custom_constants/margin_right = 50
 custom_constants/margin_top = 50
 custom_constants/margin_left = 50
