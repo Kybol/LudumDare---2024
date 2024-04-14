@@ -2,6 +2,8 @@ extends Node2D
 
 signal done
 
+var sprites_to_spawn: Array = []
+
 onready var _bases: Node2D = $Bases
 onready var _bases_array: Array = $Bases.get_children()
 #onready var _accessories_small: Node2D = $Bases
@@ -12,15 +14,10 @@ var _original_position: Vector2
 func _ready():
 	_original_position = global_position
 	
-	for sprite in _bases_array:
-		sprite.modulate.a = 0.0
-	
-	for sprite in _accessories_small:
-		sprite.modulate.a = 0.0
+	modulate.a = 0.0
 
 
 func spawn_demon(recipe: Array) -> void:
-	var sprites_to_spawn: Array
 	var accessories: Array = _accessories_small
 	var is_small: bool
 	
@@ -33,32 +30,41 @@ func spawn_demon(recipe: Array) -> void:
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.BAT_WINGS):
 		var wings: Sprite = accessories[0]
-		sprites_to_spawn.append(_accessories_small.append(wings))
+		sprites_to_spawn.append(wings)
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.STARDUST):
 		var stars: Sprite = accessories[1]
-		sprites_to_spawn.append(_accessories_small.append(stars))
+		sprites_to_spawn.append(stars)
 		
 	if recipe.has(Globals.INGREDIENTS_LIST.TOAD):
 		var toxic: Sprite = accessories[2]
-		sprites_to_spawn.append(_accessories_small.append(toxic))
+		sprites_to_spawn.append(toxic)
+	
+	for sprite in sprites_to_spawn:
+		print("Sprite ; ", sprite)
+		sprite.visible = true
 		
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	for sprite in sprites_to_spawn:
-		Globals.t = tween.tween_property(sprite, "modulate:a", 1.0, 0.5)
-		Globals.t = tween.tween_callback(self, "wait_before_end", [sprite])
+	var tween2: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)	
+	Globals.t = tween.tween_property(self, "modulate:a", 1.0, 0.5)	
+	Globals.t = tween2.tween_property(self, "global_position:y", _original_position.y - 20.0, 0.0)	
+	Globals.t = tween2.tween_property(self, "global_position:y", _original_position.y, 0.5)	
+	Globals.t = tween.tween_callback(self, "wait_before_end")
+	
 
 
-func wait_before_end(sprite: Sprite) -> void:
-	yield(get_tree().create_timer(2.0), "timeout")
+func wait_before_end() -> void:
+	yield(get_tree().create_timer(1.0), "timeout")
 	
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	Globals.t = tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
-	Globals.t = tween.tween_property(self, "global_position.y", _original_position.y + 20.0, 0.5)
+	var tween2: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	Globals.t = tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	Globals.t = tween2.tween_property(self, "global_position:y", _original_position.y + 20.0, 0.5)
 	Globals.t = tween.tween_callback(self, "done")
 
 
 func done() -> void:
+	sprites_to_spawn = []
 	global_position = _original_position
 	emit_signal("done")
 	
