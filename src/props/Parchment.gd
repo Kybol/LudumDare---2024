@@ -1,12 +1,8 @@
 extends Node2D
 
-#var min_time = 1.0
-#var max_time = 2.0
-
-onready var _ingredient_1_placeholder: Label = $ColorRect/Label
-onready var _ingredient_2_placeholder: Label = $ColorRect/Label2
-onready var _ingredient_3_placeholder: Label = $ColorRect/Label3
+onready var _icons: Array = $ParchmentSprite.get_children()
 onready var _time_bar: Line2D = $TimerBar
+onready var _reset_timer: Timer = $ResetTimer
 
 var _ingredient_1: int
 var _ingredient_2: int
@@ -15,6 +11,7 @@ var _ingredient_3: int
 func _ready() -> void:
 	randomize()
 	set_ingredients()
+	Globals.connect("success", self, "on_success")
 
 
 func set_ingredients() -> void:
@@ -24,11 +21,18 @@ func set_ingredients() -> void:
 	
 	Globals.recipie = [_ingredient_1, _ingredient_2, _ingredient_3]
 	
-	_ingredient_1_placeholder.text = Globals.ingredients_dictionary[_ingredient_1]
-	_ingredient_2_placeholder.text = Globals.ingredients_dictionary[_ingredient_2]
-	_ingredient_3_placeholder.text = Globals.ingredients_dictionary[_ingredient_3]
+	var texture_1 = Globals.ingredients_dictionary[_ingredient_1]
+	var texture_2 = Globals.ingredients_dictionary[_ingredient_2]
+	var texture_3 = Globals.ingredients_dictionary[_ingredient_3]
+	
+	var textures: Array = [texture_1, texture_2, texture_3]
+	
+	for i in _icons.size():
+		var texture = load(textures[i])
+		_icons[i].texture = texture
 	
 	_time_bar.reset_bar()
+	_reset_timer.stop()
 
 
 func reset_parchment() -> void:
@@ -38,10 +42,21 @@ func reset_parchment() -> void:
 	
 	Globals.t = Globals.recipie.empty()
 	
-	_ingredient_1_placeholder.text = ""
-	_ingredient_2_placeholder.text = ""
-	_ingredient_3_placeholder.text = ""
+	for sprite in _icons:
+		sprite.texture = null
+	
+	_time_bar.stop_bar()
+	_reset_timer.start(rand_range(1.0, 2.0))
+
+
+func on_success() -> void:
+	reset_parchment()
 
 
 func _on_TimerBar_time_to_die():
+	Globals.emit_signal("parchment_died")
 	reset_parchment()
+
+
+func _on_ResetTimer_timeout():
+	set_ingredients()

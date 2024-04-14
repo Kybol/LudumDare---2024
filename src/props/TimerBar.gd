@@ -14,6 +14,11 @@ func reset_bar() -> void:
 	_recipie_timer.start(rand_range(min_time, max_time))
 	_is_active = true
 
+func stop_bar() -> void:
+	points[1].x = 0
+	_recipie_timer.stop()
+	_is_active = false
+
 
 func _decrease() -> void:
 	points[1].x -= 10

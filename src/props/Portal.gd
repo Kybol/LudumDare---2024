@@ -24,6 +24,7 @@ func _on_Portal_selected(_num) -> void:
 	
 	if is_success:
 		put_soup_in()
+		Globals.emit_signal("success")
 	else:
 		print("NO")
 
