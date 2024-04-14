@@ -11,6 +11,7 @@ var can_interact: bool = true
 export (float) var speed: float = 300.0
 
 onready var _ingredient_placeholder: Position2D = $IngredientPlaceHolder
+onready var _animation_sprite: AnimatedSprite = $AnimatedSprite
 
 var _previous_click_position: Vector2 = Vector2.ZERO
 
@@ -34,6 +35,7 @@ func _physics_process(_delta):
 		can_interact = true		
 	elif Input.is_action_just_pressed("left_click"):
 		emit_signal("started_moving")
+		_animation_sprite.play("Walk")
 		can_interact = true
 		_is_at_destination = false
 		_previous_click_position = click_position
@@ -47,6 +49,7 @@ func _physics_process(_delta):
 	if _is_at_destination: return
 	
 	if global_position.distance_to(click_position) < 3:
+		_animation_sprite.play("Idle")		
 		_is_at_destination = true
 		emit_signal("target_reached")
 
