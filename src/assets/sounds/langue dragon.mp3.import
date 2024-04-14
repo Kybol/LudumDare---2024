@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/langue dragon.mp3-43ec80e1d3d933050f65c5766af5e119.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/langue dragon.mp3"
+dest_files=[ "res://.import/langue dragon.mp3-43ec80e1d3d933050f65c5766af5e119.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
