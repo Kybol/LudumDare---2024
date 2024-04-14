@@ -11,7 +11,7 @@ var _ingredient_3: int
 func _ready() -> void:
 	randomize()
 	set_ingredients()
-	Globals.connect("success", self, "on_success")
+	Globals.t = Globals.connect("success", self, "on_success")
 
 
 func set_ingredients() -> void:

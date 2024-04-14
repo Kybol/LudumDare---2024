@@ -27,7 +27,7 @@ func _ready():
 	for cauldron in _cauldrons:
 		cauldron.connect("selected", self, "on_cauldron_selected")
 
-	_portal.connect("selected", self, "on_portal_selected")
+	Globals.t = _portal.connect("selected", self, "on_portal_selected")
 
 
 func on_ingredient_selected(ingredient_num: int) -> void:
@@ -43,7 +43,6 @@ func on_cauldron_selected(cauldron_num: int) -> void:
 
 func on_portal_selected(_num: int) -> void:
 	_player.change_click_position(_portal.player_position.global_position)	
-	emit_signal("portal_selected")
 
 
 func _on_Player_started_moving():
