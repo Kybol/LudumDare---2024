@@ -13,6 +13,7 @@ onready var _soup: Sprite = $Visuals/ChaudronSoupe
 onready var _fire: Sprite = $Visuals/ChaudronFlammes
 onready var _bubbles: Particles2D = $Visuals/Bubbles
 onready var bulles = $bulles
+onready var ring = $ring
 
 var _cooking_min_time: float = 3.0
 var _cooking_max_time: float = 4.0
@@ -130,6 +131,7 @@ func remove_dots() -> void:
 
 
 func _on_CookingTimer_timeout():
+	ring.play()
 	set_fire_off()
 
 
