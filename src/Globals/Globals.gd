@@ -25,3 +25,7 @@ var ingredients_dictionary = {
 var selected_item: Node2D
 
 var recipie: Array = []
+
+var score
+
+var life

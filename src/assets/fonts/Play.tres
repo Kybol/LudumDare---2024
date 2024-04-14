@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://src/assets/fonts/Griffy-Regular.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 40
+outline_color = Color( 0.25098, 0.184314, 0.219608, 1 )
+font_data = ExtResource( 1 )

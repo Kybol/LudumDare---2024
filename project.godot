@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://src/Globals/Globals.gd"
+MenuBgMusic="*res://src/screens/menu/Menu_bg_music.tscn"
 
 [display]
 
