@@ -37,13 +37,15 @@ var selected_item: Node2D
 
 var recipie: Array = []
 
-var score
+var highest_score = 0
 
 var life
 
-func _ready():
+func save_highest_score():
 	var file = File.new()
 	var error = file.open("user://savegame.txt", File.WRITE)
 	if error == OK:
-		file.store_line("Hello, world!")
-		file.close()
+		file.store_32()
+		file.close(highest_score)
+
+

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/screens/menu/tuto_01.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/fonts/Play.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/assets/menu---assets/tuto_01.png" type="Texture" id=3]
-[ext_resource path="res://src/assets/Themes/Button.tres" type="Theme" id=5]
 
 [node name="Tuto_01" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,11 +39,13 @@ margin_right = 82.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.25098, 0.184314, 0.219608, 1 )
+custom_colors/font_color_hover = Color( 0.65098, 0.196078, 0.317647, 1 )
+custom_colors/font_color_pressed = Color( 0.145098, 0.0627451, 0.105882, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "next"
 flat = true
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Next" to="." method="_on_PlayButton_button_up"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Next" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Next" to="." method="_on_Play_pressed"]
