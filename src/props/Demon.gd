@@ -8,6 +8,8 @@ onready var _bases: Node2D = $Bases
 onready var _bases_array: Array = $Bases.get_children()
 #onready var _accessories_small: Node2D = $Bases
 onready var _accessories_small: Array = $AccessoriesSmall.get_children()
+onready var _accessories_mid: Array = $AccessoriesMid.get_children()
+onready var _accessories_big: Array = $AccessoriesBig.get_children()
 
 var _original_position: Vector2
 
@@ -18,14 +20,19 @@ func _ready():
 
 
 func spawn_demon(recipe: Array) -> void:
-	var accessories: Array = _accessories_small
-	var is_small: bool
+	var accessories: Array 
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.DRAGON_TONG):
-		is_small = false
+		accessories = _accessories_big
+		sprites_to_spawn.append(_bases_array[2])
+	elif recipe.has(Globals.INGREDIENTS_LIST.GOAT):
+		accessories = _accessories_small
+		sprites_to_spawn.append(_bases_array[0])
+	elif recipe.has(Globals.INGREDIENTS_LIST.STARDUST):
+		accessories = _accessories_mid
 		sprites_to_spawn.append(_bases_array[1])
 	else:
-		is_small = true
+		accessories = _accessories_small
 		sprites_to_spawn.append(_bases_array[0])
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.BAT_WINGS):
@@ -41,7 +48,6 @@ func spawn_demon(recipe: Array) -> void:
 		sprites_to_spawn.append(toxic)
 	
 	for sprite in sprites_to_spawn:
-		print("Sprite ; ", sprite)
 		sprite.visible = true
 		
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -64,7 +70,9 @@ func wait_before_end() -> void:
 
 
 func done() -> void:
+	for sprite in sprites_to_spawn:
+		sprite.visible = false
+
 	sprites_to_spawn = []
 	global_position = _original_position
 	emit_signal("done")
-	
