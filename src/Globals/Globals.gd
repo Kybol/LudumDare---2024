@@ -39,3 +39,10 @@ var recipie: Array = []
 var score
 
 var life
+
+func _ready():
+	var file = File.new()
+	var error = file.open("user://savegame.txt", File.WRITE)
+	if error == OK:
+		file.store_line("Hello, world!")
+		file.close()

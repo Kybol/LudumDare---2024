@@ -12,4 +12,5 @@ func _on_Play_pressed():
 
 
 func _on_Quit_pressed():
+	Globals._ready()
 	get_tree().quit()
