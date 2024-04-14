@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sand.mp3-637d73f391d5fc90b147c703ea663ef1.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/sand.mp3"
+dest_files=[ "res://.import/sand.mp3-637d73f391d5fc90b147c703ea663ef1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

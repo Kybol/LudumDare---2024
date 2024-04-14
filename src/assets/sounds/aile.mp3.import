@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/aile.mp3-a89b57fd2b656cf527a2eb8b6ba852ed.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/aile.mp3"
+dest_files=[ "res://.import/aile.mp3-a89b57fd2b656cf527a2eb8b6ba852ed.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

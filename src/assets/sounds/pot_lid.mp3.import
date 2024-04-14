@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pot_lid.mp3-2538ebf226646be11417713276446a94.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sounds/pot_lid.mp3"
+dest_files=[ "res://.import/pot_lid.mp3-2538ebf226646be11417713276446a94.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
