@@ -21,6 +21,7 @@ var _mouse_is_on_floor: bool
 
 
 func _ready():
+	print(Globals.life)
 	for ingredient in _ingredients:
 		ingredient.connect("selected", self, "on_ingredient_selected")
 	

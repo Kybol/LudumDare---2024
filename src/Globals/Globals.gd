@@ -2,6 +2,7 @@ extends Node
 
 signal success(num)
 signal parchment_died
+signal fail
 
 var t
 
@@ -41,7 +42,7 @@ var recipie_3: Array = []
 
 var highest_score = 0
 
-var life
+var life: int = 3
 
 func save_highest_score():
 	var file = File.new()

@@ -37,7 +37,7 @@ func _on_Portal_selected(_num) -> void:
 		_success_particles.emitting = true
 		Globals.emit_signal("success", is_success)
 	else:
-		print("NO")
+		Globals.emit_signal("fail")
 
 
 func check_soup(soup: Array) -> int:
