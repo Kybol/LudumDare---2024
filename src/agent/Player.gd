@@ -63,10 +63,14 @@ func put_ingredient_in_hands(ingredient: Sprite, is_soup: bool = false) -> void:
 	call_deferred("add_child", ingredient)
 	yield(ingredient, "tree_entered")
 	
+#	ingredients_in_soup.empty()
+	
 	ingredient.global_position = _ingredient_placeholder.global_position
 	_ingredient = ingredient
 	
-	if is_soup: _has_soup = true
+	if is_soup: 
+		ingredients_in_soup = _ingredient.ingredient_list.duplicate()
+		_has_soup = true
 
 
 func remove_ingredient_from_hands() -> Sprite:
@@ -75,7 +79,9 @@ func remove_ingredient_from_hands() -> Sprite:
 	var old_ingredient: Sprite
 	old_ingredient = _ingredient.duplicate()
 	
-	if _has_soup: ingredients_in_soup = _ingredient.ingredient_list.duplicate()
+	ingredients_in_soup.empty()
+	
+#	if _has_soup: ingredients_in_soup = _ingredient.ingredient_list.duplicate()
 	
 	_has_soup = false
 	_ingredient.modulate.a = 0.0

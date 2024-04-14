@@ -9,7 +9,7 @@ var ingredient_num: int = 5
 enum INGREDIENTS_LIST {
 	DRAGON_TONG,
 	BAT_WINGS,
-	SPIDER,
+	GOAT,
 	TOAD,
 	STARDUST
 }
@@ -17,7 +17,7 @@ enum INGREDIENTS_LIST {
 var ingredients_dictionary = {
 	INGREDIENTS_LIST.DRAGON_TONG : 	"dragon_tong",
 	INGREDIENTS_LIST.BAT_WINGS: "bat_wings",
-	INGREDIENTS_LIST.SPIDER : "spider",
+	INGREDIENTS_LIST.GOAT : "goat",
 	INGREDIENTS_LIST.TOAD : "toad",
 	INGREDIENTS_LIST.STARDUST : "stardust",
 }

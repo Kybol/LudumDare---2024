@@ -57,5 +57,7 @@ margin_bottom = 250.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="."]
+
 [connection signal="time_to_die" from="TimerBar" to="." method="_on_TimerBar_time_to_die"]
 [connection signal="timeout" from="RecipieTime" to="TimerBar" method="_on_RecipieTime_timeout"]

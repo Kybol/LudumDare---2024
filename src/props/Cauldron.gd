@@ -66,6 +66,7 @@ func take_soup() -> void:
 	_soup_is_waiting = false
 	var soup = _soup_scene.instance()
 	soup.set_ingredient_list(_ingredients_list)
+	_ingredients_list = []
 	Globals.player.put_ingredient_in_hands(soup, true)
 
 
