@@ -23,8 +23,8 @@ func _on_Portal_selected(_num) -> void:
 	
 	if not Globals.player.can_interact: return
 	
-	var soup: Node2D = Globals.player.remove_ingredient_from_hands()
-	var soup_array: Array = Globals.player.ingredients_in_soup
+	Globals.t = Globals.player.remove_ingredient_from_hands()
+	var soup_array: Array = Globals.ingredients_in_soup
 	var is_success: int
 	
 	if Globals.recipie.size() > 0:
@@ -44,6 +44,8 @@ func _on_Portal_selected(_num) -> void:
 
 func check_soup(soup: Array) -> int:
 	var soup_ingredients: Array = []
+	
+	print("SOUP / ", soup)
 	
 	for ingredient in soup:
 		soup_ingredients.append(ingredient.ingredient_type)
@@ -66,6 +68,8 @@ func compare_recipes(soup: Array) -> int:
 	if recipe == soup: return 1
 	if recipe_2 == soup: return 2
 	if recipe_3 == soup: return 3
+	
+	Globals.ingredients_in_soup = []
 	
 	return -1
 

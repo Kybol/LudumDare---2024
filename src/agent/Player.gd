@@ -20,7 +20,7 @@ var _is_stopped: bool = false
 var _has_soup: bool = false
 
 
-var _ingredient: Sprite = null
+var _ingredient: Node2D = null
 
 
 func _ready():
@@ -63,7 +63,7 @@ func stop_moving() -> void:
 	_is_stopped = true
 
 
-func put_ingredient_in_hands(ingredient: Sprite, is_soup: bool = false) -> void:
+func put_ingredient_in_hands(ingredient, is_soup: bool = false) -> void:
 	if hands_are_full(): 
 		Globals.t = remove_ingredient_from_hands()
 	
@@ -74,20 +74,21 @@ func put_ingredient_in_hands(ingredient: Sprite, is_soup: bool = false) -> void:
 	_ingredient = ingredient
 	
 	if is_soup: 
-		ingredients_in_soup = _ingredient.ingredient_list.duplicate()
+		Globals.ingredients_in_soup = _ingredient.ingredient_list.duplicate(true)
 		_has_soup = true
 
 
-func remove_ingredient_from_hands() -> Sprite:
+func remove_ingredient_from_hands() -> Node2D:
 	if not hands_are_full(): return null
 	
-	var old_ingredient: Sprite
+	var old_ingredient: Node2D
 	old_ingredient = _ingredient.duplicate()
 	
-	ingredients_in_soup.empty()
+	_ingredient.modulate.a = 0.0
+	
+	ingredients_in_soup = []
 	
 	_has_soup = false
-	_ingredient.modulate.a = 0.0
 	_ingredient.queue_free()
 	_ingredient = null
 	

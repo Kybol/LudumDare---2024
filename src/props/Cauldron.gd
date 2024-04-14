@@ -51,6 +51,9 @@ func put_ingredient_in() -> void:
 	var ingredient = Globals.player.remove_ingredient_from_hands()
 	_ingredient_count += 1
 	
+	print(ingredient)
+	print(ingredient.ingredient_type)
+	
 	_ingredients_list.append(ingredient)
 	
 	if _ingredient_count == 1:
