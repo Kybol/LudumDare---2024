@@ -17,9 +17,9 @@ func _ready() -> void:
 
 
 func set_ingredients() -> void:
-	_ingredient_1 = rand_range(0, Globals.ingredient_num - 1)
-	_ingredient_2 = rand_range(0, Globals.ingredient_num - 1)
-	_ingredient_3 = rand_range(0, Globals.ingredient_num - 1)
+	_ingredient_1 = rand_range(0, Globals.ingredient_num)
+	_ingredient_2 = rand_range(0, Globals.ingredient_num)
+	_ingredient_3 = rand_range(0, Globals.ingredient_num)
 	
 	match number:
 		1:
