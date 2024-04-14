@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "IgredientType",
+"language": "GDScript",
+"path": "res://src/props/ingredients/IngredientType.gd"
+} ]
+_global_script_class_icons={
+"IgredientType": ""
+}
+
 [application]
 
 config/name="Ludum Dare-2024"

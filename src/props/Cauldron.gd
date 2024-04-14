@@ -5,15 +5,23 @@ const MAX_NUM_INGREDIENT = 3
 onready var player_position: Position2D = $PlayerPosition
 
 onready var _cooking_timer: Timer = $CookingTimer
+onready var _timebar_timer: Timer = $TimeBarCauldron/TimebarTimer
+onready var _timebar: Line2D = $TimeBarCauldron
 onready var _dots: Node2D = $Dots
 onready var _dots_array: Array = $Dots.get_children()
 onready var _soup: Sprite = $Visuals/ChaudronSoupe
 onready var _fire: Sprite = $Visuals/ChaudronFlammes
 onready var _bubbles: Particles2D = $Visuals/Bubbles
 
+var _cooking_min_time: float = 3.0
+var _cooking_max_time: float = 4.0
+var _cooking_time: float
+
 var _ingredient_count: int = 0
+
 var _is_on_fire: bool = 0
 var _soup_is_waiting: bool = false
+
 var _soup_scene: PackedScene = preload("res://src/assets/Props/Soup.tscn")
 
 var _ingredients_list: Array = []
@@ -51,6 +59,9 @@ func put_ingredient_in() -> void:
 	var ingredient = Globals.player.remove_ingredient_from_hands()
 	_ingredient_count += 1
 	
+	print(ingredient)
+	print(ingredient.ingredient_type)
+	
 	_ingredients_list.append(ingredient)
 	
 	if _ingredient_count == 1:
@@ -76,7 +87,15 @@ func set_fire_on():
 	is_idle = false
 	_is_on_fire = true
 	_fire.modulate.a = 1.0
-	_cooking_timer.start(rand_range(3.0, 5.0))
+	
+	remove_dots()
+	
+	_cooking_time = rand_range(_cooking_min_time, _cooking_max_time)
+	_cooking_timer.start(_cooking_time)
+	
+	_timebar.points[1].x = 50
+	_timebar.modulate.a = 1.0
+	_timebar_timer.start(_cooking_time/10)	
 
 
 func set_fire_off():
@@ -86,6 +105,9 @@ func set_fire_off():
 	_cooking_timer.stop()
 	_ingredient_count = 0
 	remove_dots()
+	
+	_timebar_timer.stop()
+	_timebar.modulate.a = 0.0
 
 
 func put_soup() -> void:
@@ -106,3 +128,8 @@ func remove_dots() -> void:
 
 func _on_CookingTimer_timeout():
 	set_fire_off()
+
+
+func _on_TimebarTimer_timeout():
+	_timebar.points[1].x += 5
+	_timebar_timer.start(_cooking_time/10)
