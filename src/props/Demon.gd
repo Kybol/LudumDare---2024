@@ -32,15 +32,15 @@ func spawn_demon(recipe: Array) -> void:
 		sprites_to_spawn.append(_bases_array[0])
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.BAT_WINGS):
-		var wings: Sprite = accessories[1]
+		var wings: Sprite = accessories[0]
 		sprites_to_spawn.append(_accessories_small.append(wings))
 	
 	if recipe.has(Globals.INGREDIENTS_LIST.STARDUST):
-		var stars: Sprite = accessories[2]
+		var stars: Sprite = accessories[1]
 		sprites_to_spawn.append(_accessories_small.append(stars))
 		
 	if recipe.has(Globals.INGREDIENTS_LIST.TOAD):
-		var toxic: Sprite = accessories[3]
+		var toxic: Sprite = accessories[2]
 		sprites_to_spawn.append(_accessories_small.append(toxic))
 		
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

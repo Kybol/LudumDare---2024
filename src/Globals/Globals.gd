@@ -24,6 +24,7 @@ enum INGREDIENTS_LIST {
 #	INGREDIENTS_LIST.TOAD : "toad",
 #	INGREDIENTS_LIST.STARDUST : "stardust",
 #}
+
 var ingredients_dictionary = {
 	INGREDIENTS_LIST.DRAGON_TONG : "res://src/assets/Props/parchment/icone_flamme.png",
 	INGREDIENTS_LIST.BAT_WINGS: "res://src/assets/Props/parchment/icone_ailes.png",
