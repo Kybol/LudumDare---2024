@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/screens/UI_score.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/Themes/UI.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/assets/menu---assets/yeux02_tips.png" type="Texture" id=4]
 [ext_resource path="res://src/assets/menu---assets/uxui_panneau.png" type="Texture" id=5]
 [ext_resource path="res://src/assets/menu---assets/ames.png" type="Texture" id=6]
+[ext_resource path="res://src/assets/menu---assets/ui_tissu2.png" type="Texture" id=7]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -60,5 +61,22 @@ text = "Highest score : 0"
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Sprite" type="Sprite" parent="HBoxContainer"]
+[node name="tissu" type="Sprite" parent="HBoxContainer"]
+position = Vector2( 509.25, 39.75 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="ame3" type="Sprite" parent="HBoxContainer"]
+position = Vector2( 547.25, 40.75 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="ame2" type="Sprite" parent="HBoxContainer"]
+position = Vector2( 507, 41 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="ame1" type="Sprite" parent="HBoxContainer"]
+position = Vector2( 471, 40 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
