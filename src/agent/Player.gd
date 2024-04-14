@@ -6,6 +6,8 @@ signal started_moving
 var click_position: Vector2 = Vector2.ZERO
 var ingredients_in_soup: Array = []
 
+var can_interact: bool = true
+
 export (float) var speed: float = 300.0
 
 onready var _ingredient_placeholder: Position2D = $IngredientPlaceHolder
@@ -29,8 +31,10 @@ func _physics_process(_delta):
 	if _is_stopped: 
 		click_position = _previous_click_position
 		_is_stopped = false
+		can_interact = true		
 	elif Input.is_action_just_pressed("left_click"):
 		emit_signal("started_moving")
+		can_interact = true
 		_is_at_destination = false
 		_previous_click_position = click_position
 		click_position = get_global_mouse_position()
@@ -63,8 +67,6 @@ func put_ingredient_in_hands(ingredient: Sprite, is_soup: bool = false) -> void:
 	call_deferred("add_child", ingredient)
 	yield(ingredient, "tree_entered")
 	
-#	ingredients_in_soup.empty()
-	
 	ingredient.global_position = _ingredient_placeholder.global_position
 	_ingredient = ingredient
 	
@@ -80,8 +82,6 @@ func remove_ingredient_from_hands() -> Sprite:
 	old_ingredient = _ingredient.duplicate()
 	
 	ingredients_in_soup.empty()
-	
-#	if _has_soup: ingredients_in_soup = _ingredient.ingredient_list.duplicate()
 	
 	_has_soup = false
 	_ingredient.modulate.a = 0.0

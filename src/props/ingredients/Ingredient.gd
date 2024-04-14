@@ -11,6 +11,8 @@ func _ready() -> void:
 func _on_Ingredient_selected(_num) -> void:
 	yield(Globals.player, "target_reached")
 	
+	if not Globals.player.can_interact: return
+	
 	pick_ingredient()
 
 

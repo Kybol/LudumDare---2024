@@ -95,4 +95,5 @@ position = Vector2( 176, 576 )
 [connection signal="mouse_entered" from="Floor" to="." method="_on_Floor_mouse_entered"]
 [connection signal="mouse_exited" from="Floor" to="." method="_on_Floor_mouse_exited"]
 [connection signal="started_moving" from="Player" to="." method="_on_Player_started_moving"]
+[connection signal="target_reached" from="Player" to="." method="_on_Player_target_reached"]
 [connection signal="timeout" from="ProgressionTimer" to="." method="_on_ProgressionTimer_timeout"]

@@ -85,3 +85,29 @@ func change_parchments_timing(time_to_remove: float) -> void:
 		parchment.change_timing(_min_time, _max_time)
 		
 	_progression_timer.start(_progression_time)
+
+
+func is_near(position1: Vector2, position2: Vector2, tolerance: float) -> bool:
+	return position1.distance_to(position2) <= tolerance
+
+
+func player_in_front_of_interactable() -> bool:
+	var tolerance: float = 3.0
+	var in_front_cauldron: bool = is_near(Globals.player.global_position, _cauldrons[0].player_position.global_position, tolerance)
+	var in_front_portal: bool = is_near(Globals.player.global_position, _portal.player_position.global_position, tolerance)
+	var in_front_ingredients: bool = is_near(Globals.player.global_position, _player_ingredient_position.global_position, tolerance)
+	
+	print("in_front_cauldron : ", in_front_cauldron)
+	print("in_front_portal : ", in_front_portal)
+	print("in_front_ingredients : ", in_front_ingredients)
+	
+	print(in_front_cauldron or in_front_portal or in_front_ingredients)
+	
+	return in_front_cauldron or in_front_portal or in_front_ingredients
+
+
+func _on_Player_target_reached():
+	if not player_in_front_of_interactable():
+		Globals.player.can_interact = false
+	else:
+		Globals.player.can_interact = true
