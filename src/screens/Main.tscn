@@ -90,6 +90,9 @@ position = Vector2( 176, 576 )
 
 [node name="UI" parent="." instance=ExtResource( 12 )]
 
+[node name="ProgressionTimer" type="Timer" parent="."]
+
 [connection signal="mouse_entered" from="Floor" to="." method="_on_Floor_mouse_entered"]
 [connection signal="mouse_exited" from="Floor" to="." method="_on_Floor_mouse_exited"]
 [connection signal="started_moving" from="Player" to="." method="_on_Player_started_moving"]
+[connection signal="timeout" from="ProgressionTimer" to="." method="_on_ProgressionTimer_timeout"]

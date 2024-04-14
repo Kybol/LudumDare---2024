@@ -4,8 +4,8 @@
 [ext_resource path="res://src/assets/Props/Soup.gd" type="Script" id=2]
 
 [node name="Soup" type="Sprite"]
+position = Vector2( 0, 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
-region_enabled = true
 region_rect = Rect2( 30, 120, 80, 70 )
 script = ExtResource( 2 )

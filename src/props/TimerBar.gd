@@ -4,8 +4,8 @@ signal time_to_die
 
 export (int) var bar_size: int
 
-export (float) var min_time = 5.0
-export (float) var max_time = 7.0
+export (float) var min_time = 15.0
+export (float) var max_time = 20.0
 
 onready var _recipie_timer: Timer = $"../RecipieTime"
 

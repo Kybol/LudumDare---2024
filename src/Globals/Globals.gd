@@ -10,6 +10,9 @@ var player: KinematicBody2D
 
 var ingredient_num: int = 5
 
+var starting_min_time: float = 15.0
+var starting_max_time: float = 20.0
+
 enum INGREDIENTS_LIST {
 	DRAGON_TONG,
 	BAT_WINGS,

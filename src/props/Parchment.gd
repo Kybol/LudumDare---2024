@@ -62,6 +62,13 @@ func on_success(num: int) -> void:
 	reset_parchment()
 
 
+func change_timing(min_time, max_time) -> void:
+	if min_time <= 5.0: return
+	
+	_time_bar.min_time = min_time
+	_time_bar.max_time = max_time
+
+
 func _on_TimerBar_time_to_die():
 	Globals.emit_signal("parchment_died")
 	reset_parchment()
