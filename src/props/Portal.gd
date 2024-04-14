@@ -21,6 +21,8 @@ func _on_Portal_selected(_num) -> void:
 	
 	yield(Globals.player, "target_reached")
 	
+	if not Globals.player.can_interact: return
+	
 	var soup: Node2D = Globals.player.remove_ingredient_from_hands()
 	var soup_array: Array = Globals.player.ingredients_in_soup
 	var is_success: int
