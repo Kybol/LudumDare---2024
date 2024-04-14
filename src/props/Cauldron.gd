@@ -34,6 +34,8 @@ func _on_Cauldron_selected(_num) -> void:
 	
 	yield(Globals.player, "target_reached")
 	
+	if not Globals.player.can_interact: return
+	
 	if _soup_is_waiting:
 		take_soup()
 	else:
