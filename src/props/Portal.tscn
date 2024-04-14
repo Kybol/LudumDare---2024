@@ -73,6 +73,6 @@ position = Vector2( 112, 32 )
 
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
-volume_db = 5.222
+volume_db = 3.474
 
 [connection signal="selected" from="." to="." method="_on_Portal_selected"]
