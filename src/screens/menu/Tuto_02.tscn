@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/screens/menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://src/screens/menu/Tuto_02.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/fonts/Play.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/assets/menu---assets/menu_01.png" type="Texture" id=3]
-[ext_resource path="res://src/assets/fonts/Quit.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/assets/menu---assets/tuto_02.png" type="Texture" id=3]
 [ext_resource path="res://src/assets/Themes/Button.tres" type="Theme" id=5]
 
 [node name="MainMenu" type="Node2D"]
@@ -20,10 +19,10 @@ scale = Vector2( 0.534375, 0.557408 )
 texture = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = 425.0
-margin_top = 263.0
-margin_right = 603.0
-margin_bottom = 478.0
+margin_left = 628.0
+margin_top = 359.0
+margin_right = 806.0
+margin_bottom = 574.0
 custom_constants/margin_right = 50
 custom_constants/margin_top = 50
 custom_constants/margin_left = 50
@@ -38,7 +37,7 @@ custom_constants/separation = 10
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_right = 78.0
-margin_bottom = 61.0
+margin_bottom = 115.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
@@ -46,18 +45,5 @@ custom_fonts/font = ExtResource( 2 )
 text = "play"
 flat = true
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 71.0
-margin_right = 78.0
-margin_bottom = 115.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 4 )
-text = "quit"
-flat = true
-
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Play" to="." method="_on_PlayButton_button_up"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="button_up" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_PlayButton_button_up"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
